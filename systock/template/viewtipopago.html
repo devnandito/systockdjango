@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<table class="table1">
+		<tr>
+			<th colspan="3">Lista de tipos de pagos</th>
+		</tr>
+		<tr>
+			<th><a href="/add/tipopago"><img src="{{STATIC_URL}}img/add.png"></a> </th>
+			<th>ID</th>
+			<th>Tipo de Pagos</th>
+		</tr>
+		{% for items in list_tipopago %}
+		<tr>
+			<td><a href="{% url 'principal.views.updateTipoPago' items.id %}"><img src="{{STATIC_URL}}img/pencil.png" /></a></td>
+			<td>{{items.id}}</td>
+			<td>{{items.destipopago}}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<th colspan="3"><div class="pagination">
+				<span class="setep-links">
+					{% if list_tipopago.has_previous %}
+						<a href="?page={{ list_tipopago.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+					{% endif %}
+					<span class="current">
+						Pagina {{ list_tipopago.number }} de {{ list_tipopago.paginator.num_pages }}
+					</span>
+					{% if list_tipopago.has_next %}
+						<a href="?page={{ list_tipopago.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+					{% endif %}
+				</span>
+			</div></th>
+		</tr>
+	</table>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<table class="table1">
+		<tr>
+			<th colspan="7">Lista de Pedidos</th>
+		</tr>
+		<tr>
+			<th><a href="/add/pedido"><img src="{{STATIC_URL}}img/add.png"></a></th>
+			<th>ID</th>
+			<th>Fecha</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Tipo de pago</th>
+			<th>Cuotas</th>
+		</tr>
+		{% for items in list_pedido %}
+		<tr>
+			<td><a href="{% url 'principal.views.updatePedido' items.id %}"><img src="{{STATIC_URL}}img/pencil.png" /></a></td>
+			<td>{{items.id}}</td>
+			<td>{{items.fechapedido}}</td>
+			<td>{{items.fkcliente.namecliente}}</td>
+			<td>{{items.fkcliente.lastnamecliente}}</td>
+			<td>{{items.fktipopago}}</td>
+			<td>{{items.fkcuota}}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<th colspan="7"><div class="pagination">
+				<span class="setep-links">
+					{% if list_pedido.has_previous %}
+						<a href="?page={{ list_pedido.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+					{% endif %}
+					<span class="current">
+						Pagina {{ list_pedido.number }} de {{ list_pedido.paginator.num_pages }}
+					</span>
+					{% if list_pedido.has_next %}
+						<a href="?page={{ list_pedido.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+					{% endif %}
+				</span>
+			</div></th>
+		</tr>
+	</table>
+{% endblock %}

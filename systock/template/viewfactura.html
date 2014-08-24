@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<table class="table1">
+		<tr>
+			<th colspan="5">Lista de Facturas</th>
+		</tr>
+		<tr>
+			<th><a href="/add/factura"><img src="{{STATIC_URL}}img/add.png"></a></th>
+			<th>Pedido</th>
+			<th>Nombre</th>
+			<th>Apelldio</th>
+			<th>Fecha</th>
+		</tr>
+		{% for items in list_factura %}
+			<tr>
+				<td><a href="{% url 'principal.views.updateFactura' items.id %}"><img src="{{STATIC_URL}}img/pencil.png" /></a></td>
+				<td>{{items.fkpedido.id}}</td>
+				<td>{{items.fkpedido.fkcliente.namecliente}}</td>
+				<td>{{items.fkpedido.fkcliente.lastnamecliente}}</td>
+				<td>{{items.fechafactura}}</td>
+			</tr>
+		{% endfor %}
+		<tr>
+			<th colspan="5"><div class="pagination">
+				<span class="setep-links">
+					{% if list_factura.has_previous %}
+						<a href="?page={{ list_factura.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+					{% endif %}
+					<span class="current">
+						Pagina {{ list_factura.number }} de {{ list_factura.paginator.num_pages }}
+					</span>
+					{% if list_factura.has_next %}
+						<a href="?page={{ list_factura.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+					{% endif %}
+				</span>
+			</div></th>
+		</tr>
+	</table>
+{% endblock %}

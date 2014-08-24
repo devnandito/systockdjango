@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<table class="table1">
+		<tr>
+			<th colspan="4">Lista de Vencimientos</th>
+		</tr>
+		<tr>
+			<th>Cliente</th>
+			<th>Nro. Cuota</th>
+			<th>Fecha Vencimiento</th>
+			<th>Pedido</th>
+		</tr>
+		{% for items in list_venc %}
+		<tr>
+			<td>{{items.fkpedido.fkcliente}}</td>
+			<td>{{items.nrocuota}}</td>
+			<td>{{items.fechaven}}</td>
+			<td>{{items.fkpedido}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

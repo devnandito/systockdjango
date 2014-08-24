@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+<table class="table1">
+	{% regroup detalle_list by fkpedido as list_pedido %}
+	{% for pedido in list_pedido %}
+		<tr>
+			<th colspan="3">Pedido N° {{pedido.grouper}} de {{pedido.grouper.fkcliente}} </th>
+		</tr>
+		<tr>
+			<th><a href="{% url 'principal.views.addDetPedido' pedido.grouper.id %}"><img src="{{STATIC_URL}}img/add.png"></a></th>
+			<th>Producto</th>
+			<th>Cantidad</th>
+		</tr>
+		{% for item in pedido.list %}
+			<tr>
+				<td colspan="2">{{item.fkproducto}}</td>
+				<td>{{item.cantidad}}</td>
+			</tr>
+		{% endfor %}
+	{% endfor %}
+	<tr>
+		<th colspan="5"><div class="pagination">
+			<span class="setep-links">
+				{% if detalle_list.has_previous %}
+				<a href="?page={{ detalle_list.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+				{% endif %}
+				<span class="current">
+					Pagina {{ detalle_list.number }} de {{ detalle_list.paginator.num_pages }}
+				</span>
+				{% if detalle_list.has_next %}
+				<a href="?page={{ detalle_list.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+				{% endif %}
+			</span>
+		</div></th>
+	</tr>
+</table>
+
+{% endblock %}

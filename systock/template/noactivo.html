@@ -1,0 +1,6 @@
+{% extends 'login.html'%}
+{% block contenido %}
+	{% if error %}
+		<div style="color:red"> El usuario no esta activo </div>
+	{% endif %}
+{% endblock %}

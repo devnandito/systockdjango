@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<form id='form' method='post' action=''>{% csrf_token %}
+		{{ form.non_field_errors }}
+		<table>
+			<tr>
+				<th>Nro cuota:</th>
+				<td>{{form.nrocuota}}</td>
+				<td><div class="error">{{form.nrocuota.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Fecha Vencimiento:</th>
+				<td>{{form.fechaven}}</td>
+				<td><div class="error">{{form.fechaven.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Pedido:</th>
+				<td>{{form.fkpedido}}</td>
+				<td><div class="error">{{form.fkpedido.errors}}</div></td>
+			</tr>
+			<tr>
+				<td><a href="/view/vencimiento" class="boton"/>Volver</td>
+				<td colspan="2"><input class="boton" type='submit' value='Guardar' /></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

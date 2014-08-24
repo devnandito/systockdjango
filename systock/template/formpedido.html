@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<form id='form' method='post' action=''>{% csrf_token %}
+		{{ form.non_field_errors }}
+		<table>
+			<tr>
+				<th>Cliente pedido:</th>
+				<td>{{form.fkcliente}}</td>
+				<td><div class="error">{{form.fkcliente.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Tipo de Pago:</th>
+				<td>{{form.fktipopago}}</td>
+				<td><div class="error">{{form.fktipopago.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Cuota:</th>
+				<td>{{form.fkcuota}}</td>
+				<td><div class="error">{{form.fkcuota.errors}}</div></td>
+			</tr>
+			<tr>
+				<td><a href="/view/pedido" class="boton"/>Volver</td>
+				<td colspan="2"><input class="boton" type='submit' value='Guardar' /></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

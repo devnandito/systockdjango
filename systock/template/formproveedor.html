@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<form id='form' method='post' action=''>{% csrf_token %}
+		{{ form.non_field_errors }}
+		<table>
+			<tr>
+				<th>Nombre:</th>
+				<td>{{form.nameprov}}</td>
+				<td><div class="error">{{form.nameprov.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Dirección:</th>
+				<td>{{form.dirprov}}</td>
+				<td><div class="error">{{form.dirprov.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Teléfono:</th>
+				<td>{{form.telprov}}</td>
+				<td><div class="error">{{form.telprov.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Celular:</th>
+				<td>{{form.celprov}}</td>
+				<td><div class="error">{{form.celprov.errors}}</div></td>
+			</tr>
+			<tr>
+				<td><a href="/view/proveedor" class="boton"/>Volver</td>
+				<td colspan="2"><input class="boton" type='submit' value='Guardar' /></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

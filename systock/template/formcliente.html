@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<form id='form' method='post' action=''>{% csrf_token %}
+		{{ form.non_field_errors }}
+		<table>
+			<tr>
+				<th>Nombre:</th>
+				<td>{{form.namecliente}}</td>
+				<td><div class="error">{{form.namecliente.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Apellido:</th>
+				<td>{{form.lastnamecliente}}</td>
+				<td><div class="error">{{form.lastnamecliente.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Cedula:</th>
+				<td>{{form.cedula}}</td>
+				<td><div class="error">{{form.cedula.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Fecha Nacimiento:</th>
+				<td><span id="fecha">{{form.fechanac}}</span></span></td>
+				<td><div class="error">{{form.fechanac.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Estado Civil:</th>
+				<td>{{form.fkestadocivil}}</td>
+				<td><div class="error">{{form.fkestadocivil.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Dirección:</th>
+				<td>{{form.dircliente}}</td>
+				<td><div class="error">{{form.dircliente.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Ciudad:</th>
+				<td>{{form.fkciudad}}</td>
+				<td><div class="error">{{form.fkciudad.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Barrio:</th>
+				<td>{{form.barrio}}</td>
+				<td><div class="error">{{form.barrio.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Profesión:</th>
+				<td>{{form.profesion}}</td>
+				<td><div class="error">{{form.profesion.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Telefono:</th>
+				<td>{{form.phonecliente}}</td>
+				<td><div class="error">{{form.phonecliente.errors}}</div></td>
+			</tr>
+			<tr>
+				<td><a href="/view/cliente" class="boton"/>Volver</td>
+				<td colspan="2"><input class="boton" type='submit' value='Guardar' /></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

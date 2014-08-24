@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" href="{{STATIC_URL}}img/faviconcaja.ico" />
+	<link rel="stylesheet" href="{{STATIC_URL}}css/styles.css" />
+	<link rel="stylesheet" href="{{STATIC_URL}}css/menu.css" />
+	<link rel="stylesheet" href="{{STATIC_URL}}css/menuorder.css" />
+	<link rel="stylesheet" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.10.4.custom.min.css" />
+	<script src="{{STATIC_URL}}js/jquery.js"></script>
+	<script src="{{STATIC_URL}}js/jqueryui.js"></script>
+	<script src="{{STATIC_URL}}js/prefixfree.min.js"></script>
+	<script src="{{STATIC_URL}}js/function.js"></script>
+	<title>.::SISTEMA DE STOCK::.</title>
+</head>
+<body>
+	<section class="container">
+		<div class="title1">
+			<div class="recTitle1">
+				<div class="recTextTitle1">Kinesio Store</div>
+			</div>
+			<div class="recTitle2">
+				<div class="recTextTitle2">Equipos, Accesorios para Fisioterapia</div>
+			</div>
+		</div>
+		<header>		
+			<nav>
+				<div class="wrap">
+					<ul class="menu">
+						<li><a href="/dashboard"><img class="icon" src="{{STATIC_URL}}img/home1.png"> Home</a></li>
+						<li><a href=""><img class="icon" src="{{STATIC_URL}}img/process.png"> Administrar</a>
+							<ul>
+								<li><a href="/view/cuota"><img class="icon" src="{{STATIC_URL}}img/play.png"> Cuotas</a></li>
+								<li><a href="/view/ciudad"><img class="icon" src="{{STATIC_URL}}img/play.png"> Ciudad</a></li>
+								<li><a href="/view/estadocivil"><img class="icon" src="{{STATIC_URL}}img/play.png"> Estado Civil</a></li>
+								<li><a href="/view/proveedor"><img class="icon" src="{{STATIC_URL}}img/play.png"> Proveedores</a></li>
+								<li><a href="/view/tipoproducto"><img class="icon" src="{{STATIC_URL}}img/play.png"> Tipo de producto</a></li>
+								<li><a href="/view/tipopago"><img class="icon" src="{{STATIC_URL}}img/play.png"> Tipo de Pago</a></li>
+								<li><a href="/view/vencimiento"><img class="icon" src="{{STATIC_URL}}img/play.png"> Vencimiento</a></li>
+								<!-- <li><a href="/view/factura"><img class="icon" src="{{STATIC_URL}}img/play.png"> Factura</a></li> -->
+							</ul>
+						</li>					
+						<li><a href=""><img class="icon" src="{{STATIC_URL}}img/search.png"> Buscar</a>
+							<ul>
+								<li><a href="/search/vencimiento"><img class="icon" src="{{STATIC_URL}}img/play.png"> Vencimientos</a></li>
+								<!-- <li><a href="/test2"><img class="icon" src="{{STATIC_URL}}img/play.png"> Pagination</a></li> -->
+							</ul>
+						</li>
+						<li><a href=""><img class="icon" src="{{STATIC_URL}}img/newPage.png"> Pedidos</a>
+							<ul>
+								<li><a href="/view/cliente"><img class="icon" src="{{STATIC_URL}}img/play.png"> Cliente</a></li>
+								<li><a href="/view/pedido"><img class="icon" src="{{STATIC_URL}}img/play.png"> Pedido</a></li>
+								<li><a href="/view/detallepedido"><img class="icon" src="{{STATIC_URL}}img/play.png"> Detalles Pedidos</a></li>
+							</ul>
+						</li>
+						<li><a href=""><img class="icon" src="{{STATIC_URL}}img/shoppingCart.png"> Compras</a>
+							<ul>
+								<li><a href="/view/producto"><img class="icon" src="{{STATIC_URL}}img/play.png"> Productos</a></li>
+								<li><a href="/view/compra"><img class="icon" src="{{STATIC_URL}}img/play.png"> Compras</a></li>	
+								<li><a href="/view/detallecompra"><img class="icon" src="{{STATIC_URL}}img/play.png"> Detalles Compras</a></li>
+							</ul>
+						</li>
+						<!-- <li><a href=""><img class="icon" src="{{STATIC_URL}}img/search.png"> Test</a>
+							<ul>
+								<li><a href="/test"><img class="icon" src="{{STATIC_URL}}img/play.png"> Test</a></li>
+							</ul>
+						</li> -->
+						<li><a href="/logout"><img class="icon" src="{{STATIC_URL}}img/shut_down.png"> Logout</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<section class="content">
+			{% block contenido %}{% endblock %}
+		</section>
+		<footer>
+			<section class="foot">
+				<div class="recFoot1">					
+					<div class="recTextFoot1">© Copyright Derechos Reservados 2013 - Powered by @_cyberman</div>
+				</div>
+				<div class="recFoot2">
+					<div class="recTextFoot2">Kinesio Store</div>
+				</div>
+			</section>
+		</footer>
+	</section>
+</body>
+</html>

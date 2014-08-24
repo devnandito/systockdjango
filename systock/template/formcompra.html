@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<form id='form' method='post' action=''>{% csrf_token %}
+		{{ form.non_field_errors }}
+		<table>
+			<tr>
+				<th>Nro. factura:</th>
+				<td>{{form.nrofactura}}</td>
+				<td><div class="error">{{form.nrofactura.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Usuario:</th>
+				<td>{{form.fkuser}}</td>
+				<td><div class="error">{{form.fkuser.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Proveedor:</th>
+				<td>{{form.fkproveedor}}</td>
+				<td><div class="error">{{form.fkproveedor.errors}}</div></td>
+			</tr>
+			<tr>
+				<td><a href="/view/compra" class="boton"/>Volver</td>
+				<td colspan="2"><input class="boton" type='submit' value='Guardar' /></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

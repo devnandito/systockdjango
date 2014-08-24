@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<table class="table1">
+		<tr>
+			<th colspan="4">Lista de detalle de pedidos</th>
+		</tr>
+		<tr>
+			<th><a href="/add/detallepedido"><img src="{{STATIC_URL}}img/add.png"></a></th>
+			<th>Pedido</th>
+			<th>Producto</th>
+			<th>Cantidad</th>
+		</tr>
+		{% for items in list_detallepedido %}
+		<tr>
+			<td><a href="{% url 'principal.views.updateDetallePedido' items.id %}"><img src="{{STATIC_URL}}img/pencil.png" /></a></td>
+			<td>{{items.fkpedido}}</td>
+			<td>{{items.fkproducto}}</td>
+			<td>{{items.cantidad}}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<th colspan="4"><div class="pagination">
+				<span class="setep-links">
+					{% if list_detallepedido.has_previous %}
+						<a href="?page={{ list_detallepedido.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+					{% endif %}
+					<span class="current">
+						Pagina {{ list_detallepedido.number }} de {{ list_detallepedido.paginator.num_pages }}
+					</span>
+					{% if list_detallepedido.has_next %}
+						<a href="?page={{ list_detallepedido.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+					{% endif %}
+				</span>
+			</div></th>
+		</tr>
+	</table>
+{% endblock %}

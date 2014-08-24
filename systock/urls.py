@@ -1,0 +1,65 @@
+from django.conf.urls import patterns, include, url
+
+# Uncomment the next two lines to enable the admin:
+from django.contrib import admin
+admin.autodiscover()
+
+urlpatterns = patterns('',
+    # Examples:
+    url(r'^$', 'principal.views.ingresar', name='ingresar'),
+    url(r'^search/vencimiento/$', 'principal.views.searchven', name='searchven'),
+    url(r'^test/$', 'principal.views.viewtest', name='viewtest'),
+    url(r'^test1/(?P<fkpedido>\d+)/$', 'principal.views.addDetPedido', name='addDetPedido'),
+    url(r'^test2/$', 'principal.views.paginationTest', name='paginationTest'),
+    url(r'^view/cliente/$', 'principal.views.viewcliente', name='viewcliente'),
+    url(r'^add/cliente/$', 'principal.views.formcliente', name='formcliente'),
+    url(r'^update/cliente/(?P<pkcliente>\d+)/$', 'principal.views.updateCliente', name='updateCliente'),
+    url(r'^view/compra/$', 'principal.views.viewcompra', name='viewcompra'),
+    url(r'^add/compra/$', 'principal.views.formcompra', name='formcompra'),
+    url(r'^update/compra/(?P<pkcompra>\d+)/$', 'principal.views.updateCompra', name='updateCompra'),
+    url(r'^view/cuota/$', 'principal.views.viewcuota', name='viewcuota'),
+    url(r'^add/cuota/$', 'principal.views.formcuota', name='formcuota'),
+    url(r'^update/cuota/(?P<pkcuota>\d+)/$', 'principal.views.updateCuota', name='updateCuota'),
+    url(r'^view/ciudad/$', 'principal.views.viewciudad', name='viewciudad'),
+    url(r'^add/ciudad/$', 'principal.views.formciudad', name='formciudad'),
+    url(r'^update/ciudad/(?P<pkciudad>\d+)/$', 'principal.views.updateCiudad', name='updateCiudad'),
+    url(r'^view/estadocivil/$', 'principal.views.viewestadocivil', name='viewestadocivil'),
+    url(r'^add/estadocivil/$', 'principal.views.formestadocivil', name='formestadocivil'),
+    url(r'^update/estadocivil/(?P<pkestadocivil>\d+)/$', 'principal.views.updateEstadoCivil', name='updateEstadoCivil'),
+    url(r'^view/detallecompra/$', 'principal.views.viewdetallecompra', name='viewdetallecompra'),
+    url(r'^add/detallecompra/$', 'principal.views.formdetallecompra', name='formdetallecompra'),
+    url(r'^update/detallecompra/(?P<pkdetallecompra>\d+)/$', 'principal.views.updateDetalleCompra', name='updateDetalleCompra'),
+    url(r'^view/detallepedido/$', 'principal.views.viewdetallepedido', name='viewdetallepedido'),
+    url(r'^add/detallepedido/$', 'principal.views.formdetallepedido', name='formdetallepedido'),
+    url(r'^update/detallepedido/(?P<pkdetallepedido>\d+)/$', 'principal.views.updateDetallePedido', name='updateDetallePedido'),
+    url(r'^view/factura/$', 'principal.views.viewfactura', name='viewfactura'),
+    url(r'^add/factura/$', 'principal.views.formfactura', name='formfactura'),
+    url(r'^update/factura/(?P<pkfactura>\d+)/$', 'principal.views.updateFactura', name='updateFactura'),
+    url(r'^view/pedido/$', 'principal.views.viewpedido', name='viewpedido'),
+    url(r'^add/pedido/$', 'principal.views.formpedido', name='formpedido'),
+    url(r'^update/pedido/(?P<pkpedido>\d+)/$', 'principal.views.updatePedido', name='updatePedido'),
+    url(r'^view/proveedor/$', 'principal.views.viewproveedor', name='viewproveedor'),
+    url(r'^add/proveedor/$', 'principal.views.formproveedor', name='formproveedor'),
+    url(r'^update/proveedor/(?P<pkproveedor>\d+)/$', 'principal.views.updateProveedor', name='updateProveedor'),
+    url(r'^view/producto/$', 'principal.views.viewproducto', name='viewproducto'),
+    url(r'^add/producto/$', 'principal.views.formproducto', name='formproducto'),
+    url(r'^update/producto/(?P<pkproducto>\d+)/$', 'principal.views.updateProducto', name='updateProducto'),
+    url(r'^view/tipoproducto/$', 'principal.views.viewtipoproducto', name='viewtipoproducto'),
+    url(r'^add/tipoproducto/$', 'principal.views.formtipoproducto', name='formtipoproducto'),
+    url(r'^update/tipoproducto/(?P<pktipoproducto>\d+)/$', 'principal.views.updateTipoProducto', name='updateTipoProducto'),
+    url(r'^view/tipopago/$', 'principal.views.viewtipopago', name='viewtipopago'),
+    url(r'^add/tipopago/$', 'principal.views.formtipopago', name='formtipopago'),
+    url(r'^update/tipopago/(?P<pktipopago>\d+)/$', 'principal.views.updateTipoPago', name='updateTipoPago'),
+    url(r'^view/vencimiento/$', 'principal.views.viewvencimientocuota', name='viewvencimientocuota'),
+    url(r'^add/vencimiento/$', 'principal.views.formvencimientocuota', name='formvencimientocuota'),
+    url(r'^update/vencimiento/(?P<pkvencimiento>\d+)/$', 'principal.views.updateVencimientoCuota', name='updateVencimientoCuota'),
+    url(r'^dashboard/$', 'principal.views.index', name='index'),
+    url(r'^logout/$', 'principal.views.cerrar', name='cerrar'),
+    # url(r'^systock/', include('systock.foo.urls')),
+
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+    url(r'^admin/', include(admin.site.urls)),
+)

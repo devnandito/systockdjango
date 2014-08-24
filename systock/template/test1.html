@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<form id='form' method='post' action=''>{% csrf_token %}
+		<table>
+			<tr>
+				<th>Nro. pedido:</th>
+				<td><input name="pedido" type="hidden" value="{{pedido}}">{{pedido}}</td>
+			</tr>
+			<tr>
+				<td>Producto:</td>
+				<td>
+					<select name="producto">
+						<option value="" >---------</option>
+						{% for item in fkproducto %}
+							<option value="{{item.id}}">{{item.desprod}}</option>
+						{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Cantidad:</td>
+				<td><input name="cant" type="text"></td>
+			</tr>
+			<tr>
+				<td><a href="/test" class="boton"/>Volver</td>
+				<td><input class="boton" type='submit' value='Guardar' /></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

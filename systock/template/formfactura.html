@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<form id='form' method='post' action=''>{% csrf_token %}
+		{{ form.non_field_errors }}
+		<table>
+			<tr>
+				<th>Pedido:</th>
+				<td>{{form.fkpedido}}</td>
+				<td><div class="error">{{form.fkpedido.errors}}</div></td>
+			</tr>
+			<tr>
+				<td><a href="/view/factura" class="boton"/>Volver</td>
+				<td colspan="2"><input class="boton" type='submit' value='Guardar' /></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

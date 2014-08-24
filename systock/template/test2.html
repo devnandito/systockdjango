@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<div class="wrap1">
+		<span>Ordenar por</span>
+		<ul class="menu1">
+			<li><a href="">Elegir Criterio</a>
+				<ul>
+					<li><a href="?o=order">Por defecto</a></li>
+					<li><a href="?o=fkpedido">De A a la Z</a></li>
+					<li><a href="?o=-fkpedido">De Z a la A</a></li>
+					<li><a href="?o=fechaven">Por Fecha Asc</a></li>
+					<li><a href="?o=-fechaven">Por Fecha Desc</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<table class="table1">
+		<tr>
+			<th colspan="5">Lista de Vencimientos</th>
+		</tr>
+		<tr>
+			<th><a href="/add/vencimiento"><img src="{{STATIC_URL}}img/add.png"></a></th>
+			<th>Cliente</th>
+			<th>Nro. Cuota</th>
+			<th>Fecha Vencimiento</th>
+			<th>Pedido</th>
+		</tr>
+		{% for items in list_venc %}
+		<tr>
+			<td><a href="{% url 'principal.views.updateVencimientoCuota' items.id %}"><img src="{{STATIC_URL}}img/pencil.png" /></a></td>
+			<td>{{items.fkpedido.fkcliente}}</td>
+			<td>{{items.nrocuota}}</td>
+			<td>{{items.fechaven}}</td>
+			<td>{{items.fkpedido}}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<th colspan="5"><div class="pagination">
+				<span class="setep-links">
+					{% if list_venc.has_previous %}
+						{% if o != '' %}
+							<a href="?o={{o}}&page={{ list_venc.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+						{% else %}
+							<a href="?page={{ list_venc.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+						{% endif %}
+					{% endif %}
+					<span class="current">
+						Pagina {{ list_venc.number }} de {{ list_venc.paginator.num_pages }}
+					</span>
+					{% if list_venc.has_next %}
+						{% if o != '' %}
+							<a href="?o={{o}}&page={{ list_venc.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+						{% else %}
+							<a href="?page={{ list_venc.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+						{% endif %}
+					{% endif %}
+				</span>
+			</div></th>
+		</tr>
+	</table>
+{% endblock %}

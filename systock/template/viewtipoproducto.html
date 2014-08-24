@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<table class="table1">
+		<tr>
+			<th colspan="3">Lista Tipo de Productos</th>
+		</tr>
+		<tr>
+			<th><a href="/add/tipoproducto"><img src="{{STATIC_URL}}img/add.png"></a></th>
+			<th>ID</th>
+			<th>Tipo producto</th>
+		</tr>
+		{% for items in list_tipoprod %}
+		<tr>
+			<td><a href="{% url 'principal.views.updateTipoProducto' items.id %}"><img src="{{STATIC_URL}}img/pencil.png" /></a></td>
+			<td>{{items.id}}</td>
+			<td>{{items.destipoprod}}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<th colspan="3"><div class="pagination">
+				<span class="setep-links">
+					{% if list_tipoprod.has_previous %}
+						<a href="?page={{ list_tipoprod.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+					{% endif %}
+					<span class="current">
+						Pagina {{ list_tipoprod.number }} de {{ list_tipoprod.paginator.num_pages }}
+					</span>
+					{% if list_tipoprod.has_next %}
+						<a href="?page={{ list_tipoprod.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+					{% endif %}
+				</span>
+			</div></th>
+		</tr>
+	</table>
+{% endblock %}

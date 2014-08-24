@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<table class="table1">
+		<tr>
+			<th colspan="5">Lista de Proveedores</th>
+		</tr>
+		<tr>
+			<th><a href="/add/proveedor"><img src="{{STATIC_URL}}img/add.png"></a></th>
+			<th>Nombre</th>
+			<th>Dirección</th>
+			<th>Telefono</th>
+			<th>Celular</th>
+		</tr>
+		{% for items in list_proveedor %}
+		<tr>
+			<td><a href="{% url 'principal.views.updateProveedor' items.id %}"><img src="{{STATIC_URL}}img/pencil.png" /></a></td>
+			<td>{{items.nameprov}}</td>
+			<td>{{items.dirprov}}</td>
+			<td>{{items.telprov}}</td>
+			<td>{{items.celprov}}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<th colspan="5"><div class="pagination">
+				<span class="setep-links">
+					{% if list_proveedor.has_previous %}
+						<a href="?page={{ list_proveedor.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+					{% endif %}
+					<span class="current">
+						Pagina {{ list_proveedor.number }} de {{ list_proveedor.paginator.num_pages }}
+					</span>
+					{% if list_proveedor.has_next %}
+						<a href="?page={{ list_proveedor.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+					{% endif %}
+				</span>
+			</div></th>
+		</tr>
+	</table>
+{% endblock %}

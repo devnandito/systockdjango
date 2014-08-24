@@ -1,0 +1,108 @@
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#     * Rearrange models' order
+#     * Make sure each model has one field with primary_key=True
+# Feel free to rename the models, but don't rename db_table values or field names.
+#
+# Also note: You'll have to insert the output of 'django-admin.py sqlcustom [appname]'
+# into your database.
+from __future__ import unicode_literals
+
+from django.db import models
+
+class Departamentos(models.Model):
+    pkdpto = models.IntegerField(primary_key=True)
+    dep_descrip = models.TextField(blank=True)
+    fkdir = models.ForeignKey('Direcciones', db_column='fkdir')
+    class Meta:
+        db_table = 'departamentos'
+
+class DetalleEntregas(models.Model):
+    pkdetent = models.IntegerField(primary_key=True)
+    fkinsumo = models.ForeignKey('Insumos', db_column='fkinsumo')
+    fkentrega = models.ForeignKey('Entregas', db_column='fkentrega')
+    cantdetalle = models.IntegerField()
+    class Meta:
+        db_table = 'detalle_entregas'
+
+class DetalleSolicitudes(models.Model):
+    pkdet = models.IntegerField(primary_key=True)
+    fksol = models.ForeignKey('Solicitudes', db_column='fksol')
+    fkinsumo = models.ForeignKey('Insumos', db_column='fkinsumo')
+    can_entregada = models.IntegerField()
+    class Meta:
+        db_table = 'detalle_solicitudes'
+
+class Direcciones(models.Model):
+    pkdir = models.IntegerField(primary_key=True)
+    dir_descrip = models.TextField()
+    class Meta:
+        db_table = 'direcciones'
+
+class Entregas(models.Model):
+    pkentrega = models.IntegerField(primary_key=True)
+    fechaent = models.DateField(null=True, blank=True)
+    fkprov = models.ForeignKey('Proveedores', db_column='fkprov')
+    desentrega = models.TextField(blank=True)
+    norden = models.IntegerField(null=True, blank=True)
+    ncompra = models.IntegerField(null=True, blank=True)
+    class Meta:
+        db_table = 'entregas'
+
+class Estados(models.Model):
+    pkestado = models.IntegerField(primary_key=True)
+    es_descrip = models.TextField()
+    class Meta:
+        db_table = 'estados'
+
+class Insumos(models.Model):
+    pkinsumo = models.IntegerField(primary_key=True)
+    ins_descrip = models.TextField()
+    fktipo = models.ForeignKey('TipoInsumos', db_column='fktipo')
+    stock = models.IntegerField()
+    fkunidad = models.ForeignKey('UnidadMedidas', db_column='fkunidad')
+    fechaentrega = models.DateField()
+    class Meta:
+        db_table = 'insumos'
+
+class Proveedores(models.Model):
+    pkprov = models.IntegerField(primary_key=True)
+    prov_nombre = models.TextField(blank=True)
+    prov_telefono = models.CharField(max_length=15, blank=True)
+    prov_direccion = models.TextField(blank=True)
+    prov_correo = models.TextField(blank=True)
+    class Meta:
+        db_table = 'proveedores'
+
+class Solicitudes(models.Model):
+    pksol = models.IntegerField(primary_key=True)
+    sol_fech = models.DateTimeField(null=True, blank=True)
+    fkestado = models.ForeignKey(Estados, db_column='fkestado')
+    fkusuario = models.ForeignKey('Usuarios', db_column='fkusuario')
+    class Meta:
+        db_table = 'solicitudes'
+
+class TipoInsumos(models.Model):
+    pktipo = models.IntegerField(primary_key=True)
+    tip_descrip = models.TextField(blank=True)
+    rubro = models.IntegerField(null=True, blank=True)
+    class Meta:
+        db_table = 'tipo_insumos'
+
+class UnidadMedidas(models.Model):
+    pkunidad = models.IntegerField(primary_key=True)
+    uni_descrip = models.TextField(blank=True)
+    class Meta:
+        db_table = 'unidad_medidas'
+
+class Usuarios(models.Model):
+    pkusuario = models.IntegerField(primary_key=True)
+    usu_nick = models.CharField(max_length=30)
+    usu_pass = models.CharField(max_length=45)
+    usu_firstname = models.TextField()
+    usu_lastname = models.TextField()
+    fkdpto = models.ForeignKey(Departamentos, db_column='fkdpto')
+    usu_nivel = models.IntegerField(null=True, blank=True)
+    class Meta:
+        db_table = 'usuarios'
+

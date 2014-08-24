@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<table class="table1">
+		<tr>
+			<th colspan="4">Lisa de Productos</th>
+		</tr>
+		<tr>
+			<th><a href="/add/producto"><img src="{{STATIC_URL}}img/add.png"></a></th>
+			<th>Producto</th>
+			<th>Cantidad</th>
+			<th>Tipo</th>
+		</tr>
+		{% for items in list_producto %}
+			{% if items.stock < 3 %}
+				<tr style="color:red">
+					<td><a href="{% url 'principal.views.updateProducto' items.id %}"><img src="{{STATIC_URL}}img/pencil.png" /></a></td>
+					<td>{{items.desprod}}</td>
+					<td>{{items.stock}}</td>
+					<td>{{items.fktipoprod}}</td>	
+				</tr>
+			{% else %}
+					<tr>
+						<td><a href="{% url 'principal.views.updateProducto' items.id %}"><img src="{{STATIC_URL}}img/pencil.png" /></a></td>
+						<td>{{items.desprod}}</td>
+						<td>{{items.stock}}</td>
+						<td>{{items.fktipoprod}}</td>
+					</tr>
+			{% endif %}
+		{% endfor %}
+		<tr>
+			<th colspan="4"><div class="pagination">
+				<span class="setep-links">
+					{% if list_producto.has_previous %}
+						<a href="?page={{ list_producto.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+					{% endif %}
+					<span class="current">
+						Pagina {{ list_producto.number }} de {{ list_producto.paginator.num_pages }}
+					</span>
+					{% if list_producto.has_next %}
+						<a href="?page={{ list_producto.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+					{% endif %}
+				</span>
+			</div></th>
+		</tr>
+	</table>
+{% endblock %}

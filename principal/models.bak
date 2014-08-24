@@ -1,0 +1,46 @@
+# class DetalleFactura(models.Model):
+#     pkdetent = models.AutoField(primary_key=True)
+#     fkproducto = models.ForeignKey('Producto', db_column='fkinsumo')
+#     fkentrega = models.ForeignKey('Entregas', db_column='fkentrega')
+#     cantdetalle = models.IntegerField()
+   
+# class Factura(models.Model):
+#     pkfactura = models.AutoField(primary_key=True)
+#     fechafactura = models.DateField(null=True, blank=True)
+#     desentrega = models.TextField(blank=True)
+#     fkprov = models.ForeignKey('Proveedores', db_column='fkprov')
+#     norden = models.IntegerField(null=True, blank=True)
+#     ncompra = models.IntegerField(null=True, blank=True)
+    
+# class Producto(models.Model):
+#     pkproducto = models.AutoField(primary_key=True)
+#     desproducto = models.CharField()
+#     stockproducto = models.IntegerField(default="0")
+#     fechaentrega = models.DateField()
+#     fktipo = models.ForeignKey('TipoInsumos', db_column='fktipo')
+#     fkunidad = models.ForeignKey('UnidadMedidas', db_column='fkunidad')
+    
+# class Proveedor(models.Model):
+#     pkprov = models.AutoField(primary_key=True)
+#     nombreprov = models.CharField(blank=True, max_length=50)
+#     telprov = models.CharField(blank=True, max_length=15)
+#     dirprov = models.CharField(blank=True)
+#     emailprov = models.CharField(blank=True)
+    
+# class Pedido(models.Model):
+#     pkpedido = models.AutoField(primary_key=True)
+#     fechapedido = models.DateTimeField(null=True, blank=True)
+#     fkestado = models.ForeignKey(Estados, db_column='fkestado')
+#     fkcliente = models.ForeignKey(Cliente)
+   	
+# class TipoProducto(models.Model):
+#     pktipo = models.AutoField(primary_key=True)
+#     tip_descrip = models.CharField(blank=True)
+    
+# class UnidadMedida(models.Model):
+#     pkunidad = models.AutoField(primary_key=True)
+#     uni_descrip = models.CharField(blank=True)
+
+# class Cliente(models.Model):
+# 	pkcliente = models.AutoField(primary_key=True)
+# 	nombrecliente = models.CharField(max_length=140)

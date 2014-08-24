@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block contenido %}
+	<form id='form' method='post' action=''>{% csrf_token %}
+		{{ form.non_field_errors }}
+		<table>
+			<tr>
+				<th>Producto:</th>
+				<td>{{form.fkproducto}}</td>
+				<td><div class="error">{{form.fkproducto.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Compra:</th>
+				<td>{{form.fkcompra}}</td>
+				<td><div class="error">{{form.fkcompra.errors}}</div></td>
+			</tr>
+			<tr>
+				<th>Cantidad:</th>
+				<td>{{form.cantidadcompra}}</td>
+				<td><div class="error">{{form.cantidadcompra.errors}}</div></td>
+			</tr>
+			<tr>
+				<td><a href="/view/detallecompra" class="boton"/>Volver</td>
+				<td colspan="2"><input class="boton" type='submit' value='Guardar' /></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}
